@@ -1,0 +1,9 @@
+<form class="form" [formGroup]="indexForm" (ngSubmit)="inputDoc()">
+  <input type="text" placeholder="Input text" readonly onfocus="this.removeAttribute('readonly')" formControlName="fileContent">
+  <button type="submit" id="login-button">Creat Index</button><br><br>
+</form>
+
+<form class="form" [formGroup]="searchForm" (ngSubmit)="inputWord()">
+  <input type="text" placeholder="Username" readonly onfocus="this.removeAttribute('readonly')" formControlName="wordValue">
+  <button type="submit" id="login-button">Return paras</button><br><br>
+</form>
