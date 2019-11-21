@@ -37,11 +37,13 @@ export class HomeComponent implements OnInit {
 
   }
 
+ 
+
   inputDoc()
   {
     console.log(this.indexForm.value);
     this.str = this.indexForm.value.fileContent; 
-    this.array = this.str.split(/\s\s+/g);
+    this.array = this.str.split(/\n\s*\n/g);
 
     for(let i=0;i< this.array.length ; i++)
     { 
@@ -73,6 +75,21 @@ export class HomeComponent implements OnInit {
 
     this._base.searchPara(obj).subscribe((res)=>{
       console.log("a",res);
+      this.finalParaObj = res;
+      console.log(this.finalParaObj);
+      console.log(this.docObject);
+      for(let i=0;i<Object.keys(this.finalParaObj).length;i++)
+      {
+          for(let j=0;j<Object.keys(this.docObject).length;j++)
+          {
+           // console.log(this.finalParaObj,this.docObject);
+              if(this.finalParaObj[i].paraId == this.docObject[j].id)
+               {
+                 console.log(this.finalParaObj[i].paraId,this.docObject[j].id);
+                   console.log(this.docObject[j].paraValue,this.finalParaObj[i].tfValue);  
+               }
+          }
+      }
 
   })
 
