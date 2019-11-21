@@ -1,27 +1,75 @@
 # TapSearch
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
+A simple web app with two major functionalities -
 
-## Development server
+    * It takes in multiple paragraphs of text, assigns a unique ID To each paragraph and stores the words to paragraph mappings on an inverted index. This is similar to what elasticsearch does. This paragraph can also be referred to as a ‘document’
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+    * Given a word to search for, it lists out the top 10 paragraphs in which the word is present
 
-## Code scaffolding
+## Setup
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The API requires [Node.js](https://nodejs.org/en/download/)
 
-## Build
+To set up and running: 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+**1.** Clone the repo.
+```
+git clone https://github.com/SarthakSri98/tapSearch.git
+```
 
-## Running unit tests
+**2.**  ```cd``` into repo. Use the same directory name(below) if you do not change it.
+```
+cd tapSearch
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**3.**  Setup the application by installing its dependencies with
+```
+npm install
+```
 
-## Running end-to-end tests
+**4.**  Also, install nodemon with ```npm install nodemon``` if not installed. The app gets up and running on port 8000 with ```npm start```.
+ 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Scenario of the project
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Creation of Inverted Indexes
+We give a text sample and then in return get a inverted index of each word mapped to different paragraph(docs) in the text.
+ 1. A REST API request to **POST** on the url _/para/createIndex_. 
+ 2. There will be a fileContent property to be filled with input and then a function will be called to index each paragraph in the text.
+ 3. After that we send the doc at the backend. There, each doc is split into array of words and each word is mapped to the paragraphs they are in along with their term frequency value.
+ 4. The doc will be returned to the front-end.
+ ```
+ {
+    "user": "sarthak",
+    "authorized": true,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRhd2Zlc2dyIiwiaWF0IjoxNTQ5MTI2OTgwLCJleHAiOjE1NDkxMzA1ODB9.ywbMXejRhwsxg9A3QRcgPbh7bq2DnPBNTL3h2yIpaiM"
+}
+ ```
+
+### Image Thumbnail Generation
+This request contains a public image URL. It downloads the image, resizes to 50x50 pixels, and returns the resulting thumbnail.
+ 1. Set the request to **POST** and the url to _/image/generate-thumbnail_.
+ 2. Set the key ```imageUrl``` to a public image url.
+ 3. The token generated earlier will be patched with the key.
+ 4. At first, if JWT is missing or invalid then the request will be rejected otherwise,
+ 4. Image will be downloaded and converted to a thumbnail of size 50x50 pixels with a sample result as below:
+ ```
+ {
+    "authorized": true
+    "converted": true
+    "imagePath": "/backend/images/635thumbnail.png"
+}
+```
+
+
+
+
+
+## Built With
+
+ * [Node.js](https://nodejs.org)
+ * [Express](https://expressjs.com/)
+ * [Mocha](https://mochajs.org/) - For testing
+
+

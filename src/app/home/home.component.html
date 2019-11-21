@@ -5,10 +5,10 @@
 <table>  
 <tr>  
   <td>
-<form class="form" [formGroup]="indexForm" (ngSubmit)="inputDoc()">
+<form class="form" [formGroup]="indexForm">
   <textarea autofocus cols="100" rows="20" class="content" type="text" placeholder="Enter your text here" readonly onfocus="this.removeAttribute('readonly')" formControlName="fileContent"></textarea><br><br>
-  <button type="submit" id="login-button">Create Index</button>
-  <button type="submit" id="login-button" (click)="clearIndexes()">Clear Index</button><br><br>
+  <button type="submit" id="login-button" (click)="inputDoc()">Create Index</button>
+  <button  id="login-button" (click)="clearIndexes()">Clear Index</button><br><br>
 
 </form>
 </td>

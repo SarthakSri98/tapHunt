@@ -51,15 +51,11 @@ exports.createIndex = function(req,res,next) {
 exports.clearIndex = function(req,res,next)
 {
     console.log(indexObj,books);
-  //  indexObj = undefined;
     delete indexObj;
     delete books;
     delete bookObjectString;
- //   createIndex(undefined,undefined,undefined);
-    //books = undefined;
-   // bookObjectString = undefined;
     counter=0, counter1=0, flag=0;
-  //  global.gc();
+
     res.status(200).json({
         result : "Indexes has been deleted"
     })
@@ -70,7 +66,6 @@ exports.clearIndex = function(req,res,next)
   // Method to search the index for a term
 exports.searchIndex = function(req,res,next) {
    
-    //  console.log(req.body);
       let term = req.body.wordValue;
       let indexObj = JSON.parse(req.body.indexObj);
       console.log(Object.keys(indexObj).length);
@@ -78,23 +73,21 @@ exports.searchIndex = function(req,res,next) {
       if(Object.keys(indexObj).length<1)
       {
           res.status(200).json({
-              res : "No indexes found! Please provide data for indexing first"
-          })
+            message : "No indexes found! Please provide data for indexing first",
+            result : "f"          })
           return ;
       }
 
       if(Object.keys(indexObj).length<1)
       {
           res.status(200).json({
-              res : "No indexes found! Please provide data for indexing first"
+              message : "No indexes found! Please provide data for indexing first",
+              result : "f"
           })
           return ;
       }
 
-      if (typeof term === 'string') {
-       //    if(indexObj.hasOwnProperty(term))
-           {  
-               // console.log(indexObj.term);
+             
                indexObj[term].sort((a,b)=>{
                    if(a.tfValue < b.tfValue)
                       return 1;
@@ -116,7 +109,7 @@ exports.searchIndex = function(req,res,next) {
                 })
             } 
             console.log(Object.assign({},indexObj[term]));
+        
         }
-        }
-  }
+  
 

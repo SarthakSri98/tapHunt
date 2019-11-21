@@ -16,7 +16,7 @@ export class BaseService {
 
   searchPara(data)
   { console.log(data);
-    return this.http.post<{ paraId : string }>('http://localhost:8000/para/searchTerm', data);
+    return this.http.post<{ paraId : string, result:string, message : string }>('http://localhost:8000/para/searchTerm', data);
   }
 
   clearIndexes()
