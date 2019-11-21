@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit {
   id : number = 0;
   invertedIndexObj = {};
   finalParaObj = {};
+  dumpArr = [];
+  finalArray = [];
   constructor( private _base : BaseService ) { }
 
   ngOnInit() {
@@ -87,9 +89,12 @@ export class HomeComponent implements OnInit {
                {
                  console.log(this.finalParaObj[i].paraId,this.docObject[j].id);
                    console.log(this.docObject[j].paraValue,this.finalParaObj[i].tfValue);  
+                   this.dumpArr.push(this.docObject[j].paraValue);
                }
           }
       }
+      this.finalArray = this.dumpArr;
+      this.dumpArr = [];
 
   })
 

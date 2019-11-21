@@ -2,22 +2,10 @@
 const fs = require('fs');
 var counter = 0, counter1 = 0;
 
-function getUnique(array){
-    var uniqueArray = [];
-    
-    // Loop through array values
-    for(let i=0; i < array.length; i++){
-        if(uniqueArray.indexOf(array[i]) === -1) {
-            uniqueArray.push(array[i]);
-        }
-    }
-    return uniqueArray;
-}
-
+var indexObj = {}; 
 exports.createIndex = function(req,res,next) {
-    console.log(req.body);
-    this.books = req.body;
-    this.indexObj = {};
+    books = req.body;
+    indexObj = {};
     
     /* For each document, turn to string, lowercase, remove special characters
      * and trim beginning of line spaces.
@@ -28,9 +16,9 @@ exports.createIndex = function(req,res,next) {
       var bookObjectString = JSON.stringify(book.paraValue).toLowerCase()
       .replace(/\W/g, ' ').replace(/\s+/g, ' ')
       .trim();
-
+      var flag = 0;
        bookObjectString.split(' ').map((word,wordIndex) => {
-                console.log(wordIndex);
+
                 bookObjectString.split(' ').map((word1)=>{
                     counter++;
                     if(word == word1)
@@ -41,25 +29,35 @@ exports.createIndex = function(req,res,next) {
                 if(!indexObj.hasOwnProperty(word))
                 {
                     indexObj[word] = [{ paraId : book.id, tfValue : value }];
+                    flag=1;
                 }
                 else{
-                    indexObj[word].push({ paraId : book.id, tfValue : value });
+                    console.log(indexObj[word][indexObj[word].length - 1].paraId);
+                    if(indexObj[word][indexObj[word].length - 1].paraId != book.id)
+                   {
+                        indexObj[word].push({ paraId : book.id, tfValue : value });
+                        flag=1;
+                   }
                 }
        });
-      
-
     });
    
-    this.indexObj = getUnique(this.indexObj);
+    
 
 
-    console.log(this.indexObj);
+    console.log(indexObj);
     res.status(200).json({
-        ...this.indexObj
+        ...indexObj
     })
   }
 
-  
+exports.clearIndex = function(req,res,next)
+{
+    indexObj = undefined;
+    global.gc();
+}  
+
+
 
   // Method to search the index for a term
 exports.searchIndex = function(req,res,next) {
@@ -75,7 +73,11 @@ exports.searchIndex = function(req,res,next) {
            {  
                // console.log(indexObj.term);
                indexObj[term].sort((a,b)=>{
-                   return (a.tfValue > b.tfValue);
+                   if(a.tfValue < b.tfValue)
+                      return 1;
+                   else
+                      return -1;
+                   return 0;      
                })
            
            if(indexObj[term].length <= 10)
@@ -87,7 +89,7 @@ exports.searchIndex = function(req,res,next) {
             else
             {
                 res.status(200).json({
-                    ...Object.assign({},indexObj[term]).slice(0,10)
+                    ...Object.assign({},indexObj[term].slice(0,10))
                 })
             } 
             console.log(Object.assign({},indexObj[term]));

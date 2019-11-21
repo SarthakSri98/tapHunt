@@ -1,5 +1,5 @@
 <form class="form" [formGroup]="indexForm" (ngSubmit)="inputDoc()">
-  <textarea cols="150" rows="20" class="content" type="text" placeholder="Input text" readonly onfocus="this.removeAttribute('readonly')" formControlName="fileContent"></textarea>
+  <textarea cols="150" rows="20" class="content" type="text" placeholder="Input text" readonly onfocus="this.removeAttribute('readonly')" formControlName="fileContent"></textarea><br>
   <button type="submit" id="login-button">Creat Index</button><br><br>
 </form>
 
@@ -7,3 +7,6 @@
   <input type="text" placeholder="Username" readonly onfocus="this.removeAttribute('readonly')" formControlName="wordValue">
   <button type="submit" id="login-button">Return paras</button><br><br>
 </form>
+
+
+<p *ngFor="let para of finalArray" >{{ para }}<br></p>
