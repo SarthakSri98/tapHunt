@@ -1,13 +1,29 @@
+
+<h1 class="heading">TapSearch</h1>
+<div class="container">
+
+<table>  
+<tr>  
+  <td>
 <form class="form" [formGroup]="indexForm" (ngSubmit)="inputDoc()">
-  <textarea cols="150" rows="20" class="content" type="text" placeholder="Input text" readonly onfocus="this.removeAttribute('readonly')" formControlName="fileContent"></textarea><br>
-  <button type="submit" id="login-button">Create Index</button><br><br>
+  <textarea autofocus cols="100" rows="20" class="content" type="text" placeholder="Enter your text here" readonly onfocus="this.removeAttribute('readonly')" formControlName="fileContent"></textarea><br><br>
+  <button type="submit" id="login-button">Create Index</button>
+  <button type="submit" id="login-button" (click)="clearIndexes()">Clear Index</button><br><br>
+
 </form>
-
+</td>
+<td>
 <form class="form" [formGroup]="searchForm" (ngSubmit)="inputWord()">
-  <input type="text" placeholder="Username" readonly onfocus="this.removeAttribute('readonly')" formControlName="wordValue">
-  <button type="submit" id="login-button">Return paras</button><br><br>
+  <input rows="3" class="term" type="text" placeholder="Keyword" readonly onfocus="this.removeAttribute('readonly')" formControlName="wordValue"><br><br>
+  <button type="submit" id="login-button" class="returnPara">Return paras</button><br><br>
 </form><br>
-<button type="submit" id="login-button" (click)="clearIndexes()">Clear Index</button><br><br>
+<div class="result" *ngIf="finalArray.length > 0">
+    <p style="text-align: center"> Top 10 results are : </p><br>
+    <p *ngFor="let para of finalArray;let i = index" >&nbsp;&nbsp;{{ i+1 }}.&nbsp;{{ para }}<br></p>
+    </div>
+</td>
+</tr>
 
+</table>
+</div>
 
-<p *ngFor="let para of finalArray" >{{ para }}<br></p>

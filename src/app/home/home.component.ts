@@ -58,6 +58,7 @@ export class HomeComponent implements OnInit {
     this._base.createIndex(this.docObject).subscribe((res)=>{
         this.invertedIndexObj = res;
         console.log(this.invertedIndexObj);
+        window.alert("Index created");
     })
 
   }

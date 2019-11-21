@@ -1,4 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
+
+*{
+    font-family: 'Muli', sans-serif;
+
+}
 .content{
     white-space: pre-wrap;
+    border : 2px solid black;
+}
 
+
+.heading{
+    font-family: 'Abel', sans-serif;
+    text-align: center;
+    font-weight: 600;
+    font-size: 70px;
+    letter-spacing: 5px;
+
+}
+
+
+
+.returnPara{
+    position: relative;
+    left: 156%;
+    bottom: 100px;
+
+}
+
+#login-button{
+    margin-left:21%;
+}
+
+.term{
+    margin-left: -23.7%;
+    height: 42px;
+    font-family: 'Muli', sans-serif;
+    text-align: center;
+    position: relative;
+    left: 190%;
+    bottom: 100px;
+    border : 2px solid black;
+}
+
+button{
+    font-size: 17px;
+    padding: 11px;
+    border: 2px solid black;
+    background: white;
+    color:black;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.result{
+    background-color: white;
+    color: black;
+    position: absolute;
+    /* bottom: -22px; */
+    top: 48%;
+    left: 53.5%;
+    width: 40%;
+    white-space: normal;
+    font-size: 18px;
+    padding: 30px;
+    border: 2px solid black;
 }
