@@ -2,4 +2,155 @@ Link to cloud deployment : https://taphunt.herokuapp.com/
 
 Link to Github repo : https://github.com/SarthakSri98/tapSearch
 
-ReadeMe file : ./README.md
+ReadeMe file : ./README.md in the Github Repo
+
+
+My Vision :
+
+The main concept used in this project is of Inverted Index. It is a hashmap like data structure that directs you from a word to a document or a web page. For retrieving large amount of data in seconds, inverted index has been the goto procedure for all the search engines, technologies like elastic search etc.
+Our project takes up first input as docs for creating the inverted index file and second input as a term for which we have to find top 10 paragraphs. I have calculated term frequency to order the paragraphs.
+
+1. We can create a chrome extenstion so that we can just copy data from a website, index it and search for a keyword there.
+2. Not as efficient as some machine learning algorithms but we can develop projects like fact extractor. Suppose we have given a large data about Linkin Park in the first input. Then, it will give us top 10 lines. I have calculated only the term frequency but in this project we can also calculate the inverse data frequency and sort the sentences accordingly.
+We will calculate this tf * idf value for every word in the paragraphs then add them and assign the added values to the paragraphs. 
+3. Our project works exactly like Elastic Search however ElasticSearch is built on top of Apache Lucene, and therefore uses Lucene's data structures for its inverted index. We can also use heavy data structures and algorithms to make our app more efficient.
+4. In the coming years, data is going to increase manifolds. Our project won't be very efficient with very large data. That is when we should use Big data technoligies like Spark, Hadoop.
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+I/O :
+
+1. Input 1 :
+(i) 
+
+aa b c
+
+aa aa b c
+
+aa aa aa b c
+
+aa aa aa aa b c
+
+aa aa aa aa aa b c
+
+aa aa aa aa aa aa b c
+
+aa aa aa aa aa aa aa b c
+
+aa aa aa aa aa aa aa aa b c
+
+aa aa aa aa aa aa aa aa aa b c
+
+aa aa aa aa aa aa aa aa aa aa b c
+
+aa aa aa aa aa aa aa aa aa aa aa b c
+
+aa aa aa aa aa aa aa aa aa aa aa aa b c
+
+
+(i)(i) aa
+
+Output 1-1 :
+
+Top 10 results are :
+
+
+  1. aa aa aa aa aa aa aa aa aa aa aa aa b c
+
+  2. aa aa aa aa aa aa aa aa aa aa aa b c
+
+  3. aa aa aa aa aa aa aa aa aa aa b c
+
+  4. aa aa aa aa aa aa aa aa aa b c
+
+  5. aa aa aa aa aa aa aa aa b c
+
+  6. aa aa aa aa aa aa aa b c
+
+  7. aa aa aa aa aa aa b c
+
+  8. aa aa aa aa aa b c
+
+  9. aa aa aa aa b c
+
+  10. aa aa aa b c
+
+(i))ii) b
+
+Output 1-2 :
+Top 10 results are :
+
+  1. aa b c
+
+  2. aa aa b c
+
+  3. aa aa aa b c
+
+  4. aa aa aa aa b c
+
+  5. aa aa aa aa aa b c
+
+  6. aa aa aa aa aa aa b c
+
+  7. aa aa aa aa aa aa aa b c
+
+  8. aa aa aa aa aa aa aa aa b c
+
+  9. aa aa aa aa aa aa aa aa aa b c
+
+  10. aa aa aa aa aa aa aa aa aa aa b c  
+
+
+
+
+2. Input 2 :
+(i)
+Writing a good article requires two things: good content and good technique.
+
+There’s a lot of noise to compete against when writing on the internet. Anyone can write something, post it, and call it an article — in the information age, the definition of an article has become a very blurred line. The line between good and bad, however, is much more defined — and arguably, more important.
+
+Good content is relatively easy to create. Most people don’t realize it, but everybody has interesting things to say. Good technique is harder — it can seem abstract and nuanced, and it’s often the thing that makes or breaks an article.
+
+A weak article falls flat. A strong article changes minds, gains followers, carries weight, demands respect. It’s a worthy and valuable pursuit.
+
+My top rules for writing a good article:
+
+Rule #1 for writing a good article: minimize your barrier to entry. Make it easy for your reader to be drawn in.
+A large opening paragraph at the start of an article is a huge barrier to entry. Your reader has to wade through a large wall of text before determining if the article is really interesting and worth reading. This requires a large expenditure of effort. Most people won’t bother.
+
+Keep your opening short and punchy. A one-sentence or two-sentence leading paragraph is an easy buy-in. You can skim it and read it in barely more time than it would take to scroll past.
+Start with something short and easy to engage with. Prove to your reader that you’re providing value, then ask them to expend effort.
+
+(i)(i) good
+Output 1-1
+  1. Writing a good article requires two things: good content and good technique.
+
+  2. My top rules for writing a good article:
+
+  3. Good content is relatively easy to create. Most people don’t realize it, but everybody has interesting things to say. Good technique is harder — it can seem abstract and nuanced, and it’s often the thing that makes or breaks an article.
+
+  4. There’s a lot of noise to compete against when writing on the internet. Anyone can write something, post it, and call it an article — in the information age, the definition of an article has become a very blurred line. The line between good and bad, however, is much more defined — and arguably, more important.
+
+  5. Rule #1 for writing a good article: minimize your barrier to entry. Make it easy for your reader to be drawn in. A large opening paragraph at the start of an article is a huge barrier to entry. Your reader has to wade through a large wall of text before determining if the article is really interesting and worth reading. This requires a large expenditure of effort. Most people won’t bother.
+
+
+
+
+3. Input 3 :
+  (i) He is good in studies
+
+  (i)(i) good
+
+  Output 3 :
+   1. Writing a good article requires two things: good content and good technique.
+
+  2. He is good in studies
+
+  3. My top rules for writing a good article:
+
+  4. Good content is relatively easy to create. Most people don’t realize it, but everybody has interesting things to say. Good technique is harder — it can seem abstract and nuanced, and it’s often the thing that makes or breaks an article.
+
+  5. There’s a lot of noise to compete against when writing on the internet. Anyone can write something, post it, and call it an article — in the information age, the definition of an article has become a very blurred line. The line between good and bad, however, is much more defined — and arguably, more important.
+
+  6. Rule #1 for writing a good article: minimize your barrier to entry. Make it easy for your reader to be drawn in. A large opening paragraph at the start of an article is a huge barrier to entry. Your reader has to wade through a large wall of text before determining if the article is really interesting and worth reading. This requires a large expenditure of effort. Most people won’t bother.
