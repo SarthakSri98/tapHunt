@@ -3,7 +3,6 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 
-var catalogRouter = require('./routes/catalog');
 var paraRouter = require('./routes/paraIndex');
 
 app.use(bodyParser.json());
@@ -19,8 +18,6 @@ app.use((req, res, next) => {
     next();
 });
 
-
-//app.use('/image', catalogRouter);
 app.use('/para', paraRouter);
 
 app.use((req, res, next) => {

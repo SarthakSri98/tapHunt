@@ -100,4 +100,20 @@ export class HomeComponent implements OnInit {
 
   }
 
+  clearIndexes()
+  {
+    this.array  = [];
+    this.docObject = [];
+    this.invertedIndexObj = {};
+    this.finalParaObj = {};
+    this.dumpArr = [];
+    this.finalArray = [];
+    this.id = 0;
+     this._base.clearIndexes().subscribe((res)=>{
+       console.log(res);
+       this.indexForm.reset();
+       this.searchForm.reset();
+     })
+  }
+
 }

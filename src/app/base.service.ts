@@ -19,11 +19,9 @@ export class BaseService {
     return this.http.post<{ paraId : string }>('http://localhost:8000/para/searchTerm', data);
   }
 
-  // submitImage(data) {
-  //   return this.http.post < {
-  //     message: string,
-  //     imagePath: string
-  //   } > ('http://localhost:8000/image/generate-thumbnail', data)
-  // }
+  clearIndexes()
+  {
+     return this.http.delete('http://localhost:8000/para/clearIndexes');
+  }
 
 }

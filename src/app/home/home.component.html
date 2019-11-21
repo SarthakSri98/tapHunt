@@ -1,12 +1,13 @@
 <form class="form" [formGroup]="indexForm" (ngSubmit)="inputDoc()">
   <textarea cols="150" rows="20" class="content" type="text" placeholder="Input text" readonly onfocus="this.removeAttribute('readonly')" formControlName="fileContent"></textarea><br>
-  <button type="submit" id="login-button">Creat Index</button><br><br>
+  <button type="submit" id="login-button">Create Index</button><br><br>
 </form>
 
 <form class="form" [formGroup]="searchForm" (ngSubmit)="inputWord()">
   <input type="text" placeholder="Username" readonly onfocus="this.removeAttribute('readonly')" formControlName="wordValue">
   <button type="submit" id="login-button">Return paras</button><br><br>
-</form>
+</form><br>
+<button type="submit" id="login-button" (click)="clearIndexes()">Clear Index</button><br><br>
 
 
 <p *ngFor="let para of finalArray" >{{ para }}<br></p>
