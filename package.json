@@ -31,7 +31,7 @@
     "@angular/router": "^8.2.14",
     "body-parser": "^1.19.0",
     "core-js": "^3.4.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "fast-json-patch": "^3.0.0-1",
     "nodemon": "^2.0.0",
     "pdf-text-extract": "^1.5.0",
